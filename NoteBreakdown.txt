@@ -1,0 +1,163 @@
+
+	// Library Management System – File Breakdown Notes //
+
+		== Purpose: Entry point of the application; handles user interaction via a menu system.
+
+		== Responsibilities:
+
+			- Initializes sample books and users.
+
+			- Registers books and users through the Librarian class.
+
+			- Presents a menu for listing books, borrowing/returning, searching, and generating reports.
+
+			- Creates Transaction and sends Notification messages for borrow/return actions.
+
+		== Key Concepts:
+
+			- Uses User* pointers for dynamic user tracking.
+
+			- Demonstrates modular interaction between classes.
+
+
+
+	// Library.h / Library.cpp //
+
+		== Purpose: Central manager for books and users.
+
+		== Responsibilities:
+
+			- Stores all books (std::vector<Book>) and users (std::vector<User*>).
+
+			- Handles borrowing and returning books by matching user ID and ISBN.
+
+			- Provides listing of all books with availability status.
+
+		== Key Concepts:
+
+			- Uses pointer-based user tracking.
+
+			- Delegates book status updates to User and Book classes.
+
+
+
+	// User.h / User.cpp //
+
+		== Purpose: Represents a library user and tracks their borrowed books.
+
+		== Responsibilities:
+
+			- Stores user ID, name, and a list of borrowed Book* pointers.
+
+			- Allows borrowing and returning books by ISBN.
+
+			- Provides a method to list all borrowed books.
+
+		== Key Concepts:
+
+			- Encapsulates user-specific actions.
+
+			- Ensures book status is updated on borrow/return.
+
+
+
+	// Book.h / Book.cpp //
+
+		== Purpose: Represents a single book in the library.
+
+		== Responsibilities:
+
+			- Stores title, author, ISBN, and availability status.
+
+			- Provides methods to borrow and return the book.
+
+		== Key Concepts:
+
+			- Simple data model with state management.
+
+			- Used across multiple classes via reference or pointer.
+
+
+
+	// Librarian.h / Librarian.cpp //
+
+		== Purpose: Admin interface for managing the library.
+
+		== Responsibilities:
+
+			- Adds books to the library.
+
+			- Registers users by passing User* to the Library.
+
+		== Key Concepts:
+
+			- Acts as a controller for setup and admin tasks.
+
+			- Keeps main.cpp clean by abstracting setup logic.
+
+
+
+	// Transaction.h / Transaction.cpp //
+
+		== Purpose: Logs and displays borrow/return actions.
+
+		== Responsibilities:
+
+			- Stores ISBN, user ID, and action type ("Borrow" or "Return").
+
+			- Prints transaction details to the console.
+
+		== Key Concepts:
+
+			- Lightweight logging mechanism.
+
+			- Enhances traceability of user actions.
+
+
+
+	// Notification.h / Notification.cpp //
+
+		== Purpose: Sends simple status messages to the user.
+
+		== Responsibilities:
+
+			-Static method to print notifications (e.g., "Book borrowed successfully").
+
+		== Key Concepts:
+
+			- Keeps messaging modular and reusable.
+
+			- Can be expanded for GUI or email alerts later.
+
+
+
+	// Catalog.h / Catalog.cpp //
+
+		== Purpose: Provides search functionality for books.
+
+		== Responsibilities:
+
+			- Static methods to search books by title or author.
+
+			- Prints matching results.
+
+		== Key Concepts:
+
+			- Operates on std::vector<Book> passed from main.cpp.
+
+			- Can be extended for advanced filtering or fuzzy search.
+
+
+	// ReportGenerator.h / ReportGenerator.cpp //
+
+		== Purpose: Generates user-specific reports.
+
+		== Responsibilities:
+
+			- Accepts a User* and prints their borrowed books.
+
+		== Key Concepts:
+
+			- Modular reporting tool.
+
+			- Can be extended for PDF export or analytics.
