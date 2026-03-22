@@ -1,4 +1,5 @@
 -------------Library Management System---------------
+
 A modular C++ console application that simulates a functional library environment. It manages books, users, borrowing/returning, search tools, notifications, and report generation. The system is built across 10 .cpp files and 8 .h files for clean structure and scalability.
 
 ------------Features--------------
